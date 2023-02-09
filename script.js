@@ -54,7 +54,8 @@ function generatePassword() {
         return passwordLength;
       }
   } 
-  var userCriteria = selectCriteria();
+  var userCharacters = [];
+  selectCriteria();
   function selectCriteria() {
    
     // select uppercase or not 
@@ -66,6 +67,7 @@ function generatePassword() {
       
       if (upperSelection) {
         alert("Okay, we'll include uppercase letters!");
+        userCharacters.push(...upperCaseLetters);
         return upperSelection;
       } else {
         alert("Okay, no uppercase letters will be included.");
@@ -82,6 +84,7 @@ function generatePassword() {
         
         if (lowerSelection) {
           alert("Okay, we'll include lowercase letters!");
+          userCharacters.push(...lowerCaseLetters);
           return lowerSelection;
         } else {
           alert("Okay, no lowercase letters will be included.");
@@ -98,6 +101,7 @@ function generatePassword() {
         
         if (specialSelection) {
           alert("Okay, we'll include special characters!");
+          userCharacters.push(...specialCharacters);
           return specialSelection;
         } else {
           alert("Okay, no special characters will be included.");
@@ -114,6 +118,7 @@ function generatePassword() {
         
         if (numberSelection) {
           alert("Okay, we'll include numbers!");
+          userCharacters.push(...numbers);
           return numberSelection;
         } else {
           alert("Okay, no numbers will be included.");
@@ -127,23 +132,13 @@ function generatePassword() {
       return selectCriteria();
     } else {
       alert("All right, now we'll do our magic.")
-      return [userUpper, userLower, userSpecial, userNumber];
     }
   }
-console.log(userCriteria)
 
-var userCharacters = totalCharacters();
-
-function totalCharacters() {
-  for (let i = 0; i < userCriteria.length; i++) {
-    if(userCriteria[i] === true) { 
-      return userCharacters.concat(Array);
-    }
-  }
-  }
 console.log(userCharacters);
-
 }
+
+
 
 
   // prompt password criteria
