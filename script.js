@@ -17,8 +17,7 @@ function writePassword() {
 
 function generatePassword() {
 
-  // user select lengt
-
+  // user select length
 
   var userLength = selectLength();
   console.log(userLength);
@@ -44,14 +43,14 @@ function generatePassword() {
       }
   } 
 
-  // prompts for character types to include
+  // prompts for character types to include in password
   var userCharacters = [];
   selectCriteria();
   function selectCriteria() {
    
     // user selects to use uppercase or not. adds array to userCharacters if relevant
     var userUpper = selectUpper();
-    console.log(userUpper);
+    // console.log(userUpper); tests if working
 
     function selectUpper() {
       var upperSelection = confirm("Would you like your password to include uppercase letters?");
@@ -67,56 +66,56 @@ function generatePassword() {
     }
 
       // user selects to use lowercase or not. adds array to userCharacters if relevant
-      var userLower = selectLower();
-      console.log(userLower);
+    var userLower = selectLower();
+    // console.log(userLower); tests if working
     
-      function selectLower() {
-        var lowerSelection = confirm("Would you like your password to include lowercase letters?");
-        
-        if (lowerSelection) {
-          alert("Okay, we'll include lowercase letters!");
-          userCharacters.push(...lowerCaseLetters);
-          return lowerSelection;
-        } else {
-          alert("Okay, no lowercase letters will be included.");
-          return lowerSelection;
-        }
+    function selectLower() {
+      var lowerSelection = confirm("Would you like your password to include lowercase letters?");
+      
+      if (lowerSelection) {
+        alert("Okay, we'll include lowercase letters!");
+        userCharacters.push(...lowerCaseLetters);
+        return lowerSelection;
+      } else {
+        alert("Okay, no lowercase letters will be included.");
+        return lowerSelection;
       }
+    }
 
       // user selects to use special characters or not. adds array to userCharacters if relevant 
-      var userSpecial = selectSpecial();
-      console.log(userSpecial);
-    
-      function selectSpecial() {
-        var specialSelection = confirm("Would you like your password to include special characters?");
-        
-        if (specialSelection) {
-          alert("Okay, we'll include special characters!");
-          userCharacters.push(...specialCharacters);
-          return specialSelection;
-        } else {
-          alert("Okay, no special characters will be included.");
-          return specialSelection;
-        }
+    var userSpecial = selectSpecial();
+    // console.log(userSpecial); tests if working
+  
+    function selectSpecial() {
+      var specialSelection = confirm("Would you like your password to include special characters?");
+      
+      if (specialSelection) {
+        alert("Okay, we'll include special characters!");
+        userCharacters.push(...specialCharacters);
+        return specialSelection;
+      } else {
+        alert("Okay, no special characters will be included.");
+        return specialSelection;
       }
+    }
 
-        // user selects to use numbers or not. adds array to userCharacters if relevant 
-      var userNumber = selectNumber();
-      console.log(userNumber);
-    
-      function selectNumber() {
-        var numberSelection = confirm("Would you like your password to include numbers?");
-        
-        if (numberSelection) {
-          alert("Okay, we'll include numbers!");
-          userCharacters.push(...numbers);
-          return numberSelection;
-        } else {
-          alert("Okay, no numbers will be included.");
-          return numberSelection;
-        }
+      // user selects to use numbers or not. adds array to userCharacters if relevant 
+    var userNumber = selectNumber();
+    // console.log(userNumber); tests if working
+
+    function selectNumber() {
+      var numberSelection = confirm("Would you like your password to include numbers?");
+      
+      if (numberSelection) {
+        alert("Okay, we'll include numbers!");
+        userCharacters.push(...numbers);
+        return numberSelection;
+      } else {
+        alert("Okay, no numbers will be included.");
+        return numberSelection;
       }
- 
+    }
+
     // confirms at least one character type is selected
     if (!userSpecial && !userUpper && !userLower && !userNumber) {
       alert("Come on, you gotta pick at least one character type. Try again.");
@@ -126,15 +125,15 @@ function generatePassword() {
     }
   }
 
-console.log(userCharacters);
+// console.log(userCharacters); tests if working
 
 
-var password = "";
-for(i=0; i < userLength; i++) {
-  password += userCharacters[Math.floor(Math.random() * userCharacters.length)];
+  var password = "";
+  for(i=0; i < userLength; i++) {
+    password += userCharacters[Math.floor(Math.random() * userCharacters.length)];
   }
  
-return password;
+  return password;
 
 }
 
