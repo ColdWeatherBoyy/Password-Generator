@@ -54,11 +54,13 @@ function generatePassword() {
         return passwordLength;
       }
   } 
+
+  // prompts for character types to include
   var userCharacters = [];
   selectCriteria();
   function selectCriteria() {
    
-    // select uppercase or not 
+    // user selects to use uppercase or not. adds array to userCharacters if relevant
     var userUpper = selectUpper();
     console.log(userUpper);
 
@@ -75,7 +77,7 @@ function generatePassword() {
       }
     }
 
-      // select lowercase or not 
+      // user selects to use lowercase or not. adds array to userCharacters if relevant
       var userLower = selectLower();
       console.log(userLower);
     
@@ -92,7 +94,7 @@ function generatePassword() {
         }
       }
 
-      // select special characters or not 
+      // user selects to use special characters or not. adds array to userCharacters if relevant 
       var userSpecial = selectSpecial();
       console.log(userSpecial);
     
@@ -109,7 +111,7 @@ function generatePassword() {
         }
       }
 
-        // select numbers or not 
+        // user selects to use numbers or not. adds array to userCharacters if relevant 
       var userNumber = selectNumber();
       console.log(userNumber);
     
@@ -136,12 +138,19 @@ function generatePassword() {
   }
 
 console.log(userCharacters);
+
+
+var password = "";
+for(i=0; i < userLength; i++) {
+  password += userCharacters[Math.floor(Math.random() * userCharacters.length)];
+  }
+ 
+  console.log(password);
+
 }
 
 
 
-
-  // prompt password criteria
 
 // prompts for character types to include
   // prompts for uppercase yes or no
