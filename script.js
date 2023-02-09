@@ -19,7 +19,7 @@ generateBtn.addEventListener("click", writePassword);
 
 let upperCaseLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 let lowerCaseLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-let digits = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+let numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 let specialCharacters =[" ", "!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~"];
 
 // pseudo code 
@@ -28,7 +28,8 @@ generatePassword();
 
 function generatePassword() {
 
-  // user select length
+  // user select lengt
+
 
   var userLength = selectLength();
   console.log(userLength);
@@ -49,52 +50,106 @@ function generatePassword() {
         alert("That number is outside the range, please try again.");
         return selectLength();
       } else if (passwordLength >= 8 && passwordLength <=128) {
-        alert("Okay, moving on!");
+        alert("Thanks, here's some more parameters to select!");
         return passwordLength;
       }
   } 
-
-  // select uppercase or not 
-  var userUpper = selectUpper();
-  console.log(userUpper);
-
-  function selectUpper() {
-    var upperSelection = confirm("Would you like your password to include uppercase letters?");
-    
-    if (upperSelection) {
-      alert("Okay, we'll include uppercase letters!");
-      return upperSelection;
-    } else {
-      alert("Okay, no uppercase letters will be included.")
-    }
-  }
-
+  var userCriteria = selectCriteria();
+  function selectCriteria() {
+   
     // select uppercase or not 
-    var userLower = selectLower();
-    console.log(userLower);
-  
-    function selectLower() {
-      var lowerSelection = confirm("Would you like your password to include Lowercase letters?");
+    var userUpper = selectUpper();
+    console.log(userUpper);
+
+    function selectUpper() {
+      var upperSelection = confirm("Would you like your password to include uppercase letters?");
       
-      if (lowerSelection) {
-        alert("Okay, we'll include lowercase letters!");
-        return lowerSelection;
+      if (upperSelection) {
+        alert("Okay, we'll include uppercase letters!");
+        return upperSelection;
       } else {
-        alert("Okay, no lowercase letters will be included.")
+        alert("Okay, no uppercase letters will be included.");
+        return upperSelection;
       }
     }
 
-}
+      // select lowercase or not 
+      var userLower = selectLower();
+      console.log(userLower);
+    
+      function selectLower() {
+        var lowerSelection = confirm("Would you like your password to include lowercase letters?");
+        
+        if (lowerSelection) {
+          alert("Okay, we'll include lowercase letters!");
+          return lowerSelection;
+        } else {
+          alert("Okay, no lowercase letters will be included.");
+          return lowerSelection;
+        }
+      }
 
-// data sets
+      // select special characters or not 
+      var userSpecial = selectSpecial();
+      console.log(userSpecial);
+    
+      function selectSpecial() {
+        var specialSelection = confirm("Would you like your password to include special characters?");
+        
+        if (specialSelection) {
+          alert("Okay, we'll include special characters!");
+          return specialSelection;
+        } else {
+          alert("Okay, no special characters will be included.");
+          return specialSelection;
+        }
+      }
+
+        // select numbers or not 
+      var userNumber = selectNumber();
+      console.log(userNumber);
+    
+      function selectNumber() {
+        var numberSelection = confirm("Would you like your password to include numbers?");
+        
+        if (numberSelection) {
+          alert("Okay, we'll include numbers!");
+          return numberSelection;
+        } else {
+          alert("Okay, no numbers will be included.");
+          return numberSelection;
+        }
+      }
+ 
+    if (!userSpecial && !userUpper && !userLower && !userNumber) {
+      alert("Come on, you gotta pick at least one character type. Try again.");
+      // could instead do a prompt asking which character they'd like to select and just using that, but this feels better
+      return selectCriteria();
+    } else {
+      alert("All right, now we'll do our magic.")
+      return [userUpper, userLower, userSpecial, userNumber];
+    }
+  }
+console.log(userCriteria)
+
+var userCharacters = totalCharacters();
+
+function totalCharacters() {
+  for (let i = 0; i < userCriteria.length; i++) {
+    if(userCriteria[i] === true) { 
+      return userCharacters.concat(Array);
+    }
+  }
+  }
+console.log(userCharacters);
+
+}
 
 
   // prompt password criteria
-//prompt for password length from 8 to 128
 
 // prompts for character types to include
   // prompts for uppercase yes or no
-  // prompts for character yes or no
   // prompts for lowercase yes or no
   // prompts for numeric yes or no
   // prompts for special characters yes or now
