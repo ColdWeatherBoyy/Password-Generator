@@ -15,12 +15,6 @@ function writePassword() {
 
 }
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
-
-if 
-generatePassword();
-
 function generatePassword() {
 
   // user select lengt
@@ -140,6 +134,9 @@ for(i=0; i < userLength; i++) {
   password += userCharacters[Math.floor(Math.random() * userCharacters.length)];
   }
  
-  console.log(password);
+return password;
 
 }
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
